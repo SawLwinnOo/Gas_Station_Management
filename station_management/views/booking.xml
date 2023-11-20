@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="booking_view_tree" model="ir.ui.view">
+        <field name="name">booking_view_tree</field>
+        <field name="model">station.booking</field>
+        <field name="arch" type="xml">
+            <tree string="booking_tree"
+                  decoration-danger="state == 'cancel'"
+                  decoration-warning="state == 'draft'"
+                  decoration-success="state == 'complete'"
+                  decoration-primary="state in ('paid','accept','arrive',)"
+                  decoration-info="state in ('confirm','reschedule')">
+                <field name="name" optional="show"/>
+                <field name="car_id" optional="hide"/>
+                <field name="customer" optional="show" widget="many2one_avatar_user"/>
+                <field name="station_id" optional="show"/>
+                <field name="booking_date" optional="show"/>
+                <field name="state" optional="show" widget="badge"
+                       decoration-danger="state == 'cancel'"
+                       decoration-warning="state == 'draft'"
+                       decoration-success="state == 'complete'"
+                       decoration-primary="state in ('paid','accept','arrive',)"
+                       decoration-info="state in ('confirm','reschedule')"/>
+                <field name="unit" optional="show"/>
+                <field name="total" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+    <record id="booking_view_form" model="ir.ui.view">
+        <field name="name">booking_view_form</field>
+        <field name="model">station.booking</field>
+        <field name="arch" type="xml">
+            <form string="booking_form">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight"
+                            invisible="state in ('paid', 'confirm', 'complete', 'accept', 'arrive')"/>
+                    <button name="action_accepted" type="object" string="Accept" class="oe_highlight"
+                            invisible="state in ('accept', 'draft', 'confirm', 'cancel','complete','reschedule','paid')"/>
+                    <button name="action_paid" type="object" string="Paid" class="oe_highlight"
+                            confirm="Are you sure want to Paid?"
+                            invisible="state in ('paid','cancel','draft', 'reschedule','accept','arrive','complete',)"/>
+                    <button name="action_arrived" type="object" string="Arrived" class="oe_highlight"
+                            invisible="state in ('arrive', 'draft', 'confirm', 'complete','cancel', 'accept','reschedule')"/>
+                    <button name="action_complete" type="object" string="Complete" class="oe_highlight"
+                            invisible="state in ('complete','cancel','draft','confirm', 'paid','reschedule')"/>
+                    <button name="action_reschedule" type="object" string="Reschedule" class="oe_highlight"
+                            invisible="state in ('arrive','reschedule','accept','complete')"/>
+                    <button name="action_draft" type="object" string="Draft" class="oe_highlight"
+                            invisible="state == 'draft'"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="oe_highlight"
+                            invisible="state == 'cancel'"/>
+
+
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft, confirm, paid, accept, arrive, complete,  reschedule, cancel"/>
+
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Paid" bg_color="text-bg-info"
+                            invisible="state in ('cancel', 'confirm', 'complete', 'reschedule', 'draft','accept','arrive')"/>
+                    <widget name="web_ribbon" title="Draft" bg_color="text-bg-warning"
+                            invisible="state in ('cancel', 'confirm', 'complete', 'reschedule', 'paid','accept','arrive',)"/>
+                    <widget name="web_ribbon" title="Complete"
+                            invisible="state in ('cancel', 'confirm', 'draft', 'reschedule', 'paid','accept','arrive',)"/>
+                    <widget name="web_ribbon" title="Cancel" bg_color="text-bg-danger"
+                            invisible="state in ('complete', 'confirm', 'draft', 'reschedule', 'paid','accept','arrive',)"/>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="customer" widget="many2one_avatar_user"/>
+                        <field name="car_id"/>
+                        <field name="booking_date" string="Date"/>
+                    </group>
+                    <group string="Station Info">
+                        <field name="station_id"/>
+                        <field name="lane_id" options="{'no_create': True}" domain="[('station_id', '=', station_id)]"/>
+                        <field name="unit"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="price" widget="monetary"/>
+                        <field name="total" widget="monetary"/>
+                        <field name="note" placeholder="Terms And Conditions..."/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="booking_action" model="ir.actions.act_window">
+        <field name="name">Booking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">station.booking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
