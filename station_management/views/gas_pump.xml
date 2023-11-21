@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pum_view_tree" model="ir.ui.view">
+        <field name="name">pum_view_tree_view_tree</field>
+        <field name="model">station.gas.pump</field>
+        <field name="arch" type="xml">
+            <tree string="pum_view_tree_tree">
+                <field name="name"/>
+                <field name="station_id" string="Station"/>
+                <field name="lane_id" string="Lane"/>
+            </tree>
+        </field>
+    </record>
+    <record id="gas_pump_view_form" model="ir.ui.view">
+        <field name="name">gas_pump_view_form</field>
+        <field name="model">station.gas.pump</field>
+        <field name="arch" type="xml">
+            <form string="gas_pump_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="station_id" string="Station"/>
+                        <field name="lane_id" string="Lane" domain="[('station_id', '=', station_id)]"/>
+
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="gas_pump_action" model="ir.actions.act_window">
+        <field name="name">Gas Pump</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">station.gas.pump</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -78,12 +78,15 @@
                     <group string="Station Info">
                         <field name="station_id"/>
                         <field name="lane_id" options="{'no_create': True}" domain="[('station_id', '=', station_id)]"/>
+                        <field name="pump_ids" string="Gas Pump" widget="many2many_tags" options="{'no_create': True}"
+                               domain="[('lane_id', '=', lane_id)]"/>
                         <field name="unit"/>
                         <field name="currency_id" invisible="1"/>
                         <field name="price" widget="monetary"/>
                         <field name="total" widget="monetary"/>
                         <field name="note" placeholder="Terms And Conditions..."/>
                     </group>
+
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>

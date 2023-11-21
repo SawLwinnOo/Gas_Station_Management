@@ -7,8 +7,8 @@ class StationManagement(models.Model):
     _description = 'StationManagement'
 
     name = fields.Char(tracking=True)
-    lane_id = fields.Many2many('station.management.lane', 'station_id', tracking=True)
-    owner_id = fields.Many2one("res.users", tracking=True)
+    lane_id = fields.One2many('station.management.lane', 'station_id', tracking=True)
+    owner_id = fields.Many2one("res.partner", tracking=True)
     manager_id = fields.Many2one('res.partner', tracking=True)
     employee_id = fields.Many2one("res.partner", tracking=True)
     company_id = fields.Many2one('res.company', default=lambda self: self.env.user.company_id.id)

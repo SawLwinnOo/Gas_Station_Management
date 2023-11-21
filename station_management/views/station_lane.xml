@@ -4,10 +4,11 @@
         <field name="name">station_lane_view_tree</field>
         <field name="model">station.management.lane</field>
         <field name="arch" type="xml">
-            <tree string="station_lane_tree" >
+            <tree string="station_lane_tree">
                 <field name="name"/>
+                <field name="gas_pump_ids" string="Gas Pump" widget="many2many_tags"/>
                 <field name="station_id" string="Station" options="{'no_create': True}"/>
-                <field name="active" string="Active" />
+                <field name="active" string="Active"/>
             </tree>
         </field>
     </record>
@@ -19,25 +20,32 @@
             <form string="station_lane_form">
                 <sheet>
                     <group>
-                        <field name="name" />
+                        <field name="name"/>
+                        <field name="gas_pump_ids" string="Gas Pump" widget="many2many_tags"
+                               options="{'no_create': True}" domain="[('lane_id','=',id)]"/>
                         <field name="station_id" string="Station"/>
                         <field name="active" domain=""/>
 
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
     <record id="station_lane_search" model="ir.ui.view">
-            <field name="model">station.management.lane</field>
-            <field name="arch" type="xml">
-                <search string="Outgoing Mail Servers">
-                    <field name="name"/>
-                    <separator/>
-                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
-                </search>
-            </field>
-        </record>
+        <field name="model">station.management.lane</field>
+        <field name="arch" type="xml">
+            <search string="Outgoing Mail Servers">
+                <field name="name"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
     <record id="station_lane_action" model="ir.actions.act_window">
         <field name="name">Lane</field>
         <field name="type">ir.actions.act_window</field>

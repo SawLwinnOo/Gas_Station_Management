@@ -24,6 +24,7 @@
         'views/booking.xml',
         'views/station.xml',
         'views/station_lane.xml',
+        'views/gas_pump.xml',
         'views/menus.xml'
 
     ],

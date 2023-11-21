@@ -11,6 +11,7 @@ class StationBooking(models.Model):
     car_id = fields.Many2one("fleet.vehicle", string="Car", tracking=True, )
     station_id = fields.Many2one("station.management", string="Station", tracking=True)
     lane_id = fields.Many2one('station.management.lane')
+    pump_ids = fields.Many2many('station.gas.pump', 'station_id')
     booking_date = fields.Datetime(default=lambda self: fields.Datetime.today(), tracking=True)
     unit = fields.Float(required=True)
     currency_id = fields.Many2one('res.currency', related='station_id.currency_id')
