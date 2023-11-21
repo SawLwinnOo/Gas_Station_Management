@@ -1,18 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "station_management",
-
-    'summary': " summary of the module's purpose",
-
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
-    'depends': ['base', 'fleet'],
-
-    # always loaded
+    'depends': ['base', 'fleet', 'web'],
     'data': [
         #security
         'security/ir.model.access.csv',
@@ -28,4 +17,10 @@
         'views/menus.xml'
 
     ],
+    'assets': {
+        'web.assets_backend': [
+            'station_management/static/src/station_management/booking_list.js',
+            'station_management/static/src/station_management/booking_list.xml',
+        ],
+    }
 }
