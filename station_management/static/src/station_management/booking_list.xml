@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="station_management.booking_list" owl="1">
-        <h1>Hello World!</h1>
+        <div class="container mt-3">
+            <h1>Station Booking</h1>
+            <button class="btn btn-primary">New</button>
+        </div>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Car</th>
+                        <th scope="col">Station</th>
+                        <th scope="col">Booking Date</th>
+                        <th scope="col">State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="this.state.BookingList" t-as="booking" t-key="booking_index">
+                        <td>#</td>
+
+                        <td t-esc="booking.name"/>
+                        <td t-esc="booking.customer[1]"/>
+                        <td t-esc="booking.car_id[1]"/>
+                        <td t-esc="booking.station_id[1]"/>
+                        <td t-esc="booking.booking_date"/>
+                        <td t-esc="booking.state"/>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </t>
 </templates>
