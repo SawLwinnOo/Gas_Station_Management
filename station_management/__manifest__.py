@@ -22,5 +22,5 @@
             'station_management/static/src/station_management/booking_list.js',
             'station_management/static/src/station_management/booking_list.xml',
         ],
-    }
+    },
 }

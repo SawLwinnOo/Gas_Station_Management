@@ -1,12 +1,16 @@
 /** @odoo-module **/
 
 import { registry } from "@web/core/registry";
-import { Component, onWillStart, useState} from "@odoo/owl";
+import { Component, onWillStart, useState, useRef} from "@odoo/owl";
 
 
 class BookingList extends Component {
 
     setup() {
+
+        this.booing= ['name',"customer",'car_id','station_id','booking_date','state']
+        this.orm = this.env.services.orm;
+        this.searchInput = useRef('search-input')
         this.state = useState({
             BookingList: [
                 {'id':1, 'name': "a", 'customer': "Name"},
@@ -20,13 +24,17 @@ class BookingList extends Component {
     }
 
     async GetAllBooking(){
-        const orm = this.env.services.orm;
-        var booing= ['name',"customer",'car_id','station_id','booking_date','state']
-        this.state.BookingList = await orm.searchRead("station.booking",[], booing);
-        var booking_id =  orm.search('station.booking',[])
+
+        this.state.BookingList = await this.orm.searchRead("station.booking",[], this.booing);
         console.log(this.state.BookingList)
-        console.log(typeof booking_id)
-        console.log( booking_id)
+
+    }
+
+    async searchBooking(){
+        var text =this.searchInput.el.value
+        this.state.BookingList = await this.orm.searchRead("station.booking",[['name', 'ilike', text]], this.booing);
+        console.log(this.searchInput.el.value);
+        console.log("search..");
     }
 }
 

@@ -106,7 +106,7 @@
     <record id="action_booking_list" model="ir.actions.client">
         <field name="name">Booking List</field>
         <field name="tag">station_management.booking_client_action</field>
-<!--        <field name="target">current</field>-->
+        <field name="target">current</field>
     </record>
 
 </odoo>

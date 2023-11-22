@@ -3,7 +3,15 @@
     <t t-name="station_management.booking_list" owl="1">
         <div class="container mt-3">
             <h1>Station Booking</h1>
-            <button class="btn btn-primary">New</button>
+            <div class="row justify-content-end mb-3">
+                <div class=" col-lg-3">
+                    <input t-ref="search-input" type="text" placeholder="Search..." t-on-keyup="searchBooking"/>
+                </div>
+                <div class="col-lg-1 me-2">
+                    <button class="btn-primary" t-on-click="searchBooking">Search</button>
+                </div>
+
+            </div>
         </div>
         <div class="container">
             <table class="table">
@@ -18,7 +26,7 @@
                         <th scope="col">State</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="scrollVertical">
                     <tr t-foreach="this.state.BookingList" t-as="booking" t-key="booking_index">
                         <td>#</td>
 
@@ -28,6 +36,10 @@
                         <td t-esc="booking.station_id[1]"/>
                         <td t-esc="booking.booking_date"/>
                         <td t-esc="booking.state"/>
+                        <td>
+                            <button class="btn btn-primary" t-on-click="(e)=> this.changeState(e,booking)"
+                                    title="reschedule">Reschedule</button>
+                        </td>
 
                     </tr>
 
