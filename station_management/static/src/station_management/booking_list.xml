@@ -36,9 +36,12 @@
                         <td t-esc="booking.station_id[1]"/>
                         <td t-esc="booking.booking_date"/>
                         <td t-esc="booking.state"/>
+<!--                        <td>-->
+<!--                            <button class="btn btn-primary" t-on-click="(e)=> this.changeState(e,booking)"-->
+<!--                                    title="reschedule">Reschedule</button>-->
+<!--                        </td>-->
                         <td>
-                            <button class="btn btn-primary" t-on-click="(e)=> this.changeState(e,booking)"
-                                    title="reschedule">Reschedule</button>
+                            <button class="btn btn-danger" t-on-click="(e)=> this.deleteBooking(booking)">Delete</button>
                         </td>
 
                     </tr>

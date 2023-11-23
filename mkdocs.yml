@@ -1,0 +1,7 @@
+site_name: Station Management Docs
+theme:
+  name: "material"
+
+  nav:
+    - Station Management Docs:index.md
+    - introduction.md
