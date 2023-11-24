@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.module.category" id="station_management_access">
+        <field name="name">Station Management</field>
+    </record>
+    <record id="station_management_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="station_management.station_management_access"/>
+    </record>
+    <record id="station_management_employee" model="res.groups">
+        <field name="name">Employee</field>
+        <field name="category_id" ref="station_management.station_management_access"/>
+    </record>
+    <record id="station_management_owner" model="res.groups">
+        <field name="name">Owner</field>
+        <field name="category_id" ref="station_management.station_management_access"/>
+    </record>
+    <record id="station_management_driver" model="res.groups">
+        <field name="name">Driver</field>
+        <field name="category_id" ref="station_management.station_management_access"/>
+    </record>
+</odoo>

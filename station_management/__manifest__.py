@@ -5,6 +5,7 @@
     'data': [
         #security
         'security/ir.model.access.csv',
+        'security/station_security.xml',
 
         #data
         'data/sequence.xml',
