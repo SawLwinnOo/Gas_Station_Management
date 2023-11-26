@@ -2,6 +2,7 @@ site_name: Gas Station Management
 site_url: https://sawlwinnoo.github.io/Gas_Station_Management/
 theme:
   name: material
+  logo: docs/img/logo.png
   features:
     - navigation.tabs
     - navigation.sections
