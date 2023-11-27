@@ -23,7 +23,7 @@ class StationBooking(models.Model):
         ('confirm', 'Confirmed'),
         ('paid', 'Paid'),
         ('reschedule', 'Reschedule'),
-        ('arrive', 'Arrived'),
+        ('arrived', 'Arrived'),
         ('accept', 'Accepted'),
         ('complete', 'Completed'),
         ('cancel', 'Canceled'),
@@ -72,4 +72,4 @@ class StationBooking(models.Model):
 
     def action_arrived(self):
         for rec in self:
-            rec.state = 'arrive'
+            rec.state = 'arrived'

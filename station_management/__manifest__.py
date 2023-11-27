@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "station_management",
-    'depends': ['base', 'fleet', 'web'],
+    'depends': ['base', 'web', 'mail','fleet'],
     'data': [
         #security
         'security/ir.model.access.csv',
