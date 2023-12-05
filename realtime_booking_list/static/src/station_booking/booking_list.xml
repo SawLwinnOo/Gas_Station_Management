@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
-    <t t-name="station_management.booking_list" owl="1">
+    <t t-name="realtime_booking_list.booking_list" owl="1">
         <div class="container mt-3">
             <h1>Station Booking</h1>
             <div class="row justify-content-between mt-3 mb-1">
@@ -33,7 +33,7 @@
                 <tbody style="overflow: hidden">
                     <tr t-foreach="this.state.BookingList" t-as="booking" t-key="booking_index">
                         <td>
-                            <input type="checkbox" t-att-check="state.isCheck" t-on-click="(e)=> this.toggleCheckbox(e)"/>
+                            <input type="checkbox" t-att-check="state.isCheck" t-on-click="(e)=> this.toggleCheckbox(e, booking)"/>
                         </td>
 
                         <td t-esc="booking.name"/>
@@ -41,11 +41,7 @@
                         <td t-esc="booking.car_id[1]"/>
                         <td t-esc="booking.station_id[1]"/>
                         <td t-esc="booking.booking_date"/>
-                        <td ><span t-esc="booking.state"  style="display: inline-table;
-                                                                vertical-align: middle; width: 80px; height: 20px;
-                                                                background-color: #bbb;
-                                                                border-radius: 10%;
-                                                                text-align: center"/>
+                        <td ><span t-esc="booking.state" class="badge rounded-pill bg-primary text-white" />
                         </td>
                         <td>
                             <button class="btn btn-danger" t-on-click="(e)=> this.onDeleteBooking(booking) ">Delete</button>

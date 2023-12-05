@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "station_management",
+    'name': "Gas Station Management",
     'depends': ['base', 'web', 'mail','fleet'],
     'data': [
         #security
@@ -18,10 +18,4 @@
         'views/menus.xml'
 
     ],
-    'assets': {
-        'web.assets_backend': [
-            'station_management/static/src/station_management/booking_list.js',
-            'station_management/static/src/station_management/booking_list.xml',
-        ],
-    },
 }

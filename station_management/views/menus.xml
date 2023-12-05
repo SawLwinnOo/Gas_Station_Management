@@ -14,7 +14,6 @@
             <menuitem id="Gas_categ" name="Gas Pump"  action="station_management.gas_pump_action" sequence="20"/>
 
         </menuitem>
-        <menuitem id="Booking_list_categ" name="Booking List" action="station_management.action_booking_list" sequence="10"/>
 
     </menuitem>
 </odoo>

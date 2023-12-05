@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_booking_list" model="ir.actions.client">
+        <field name="name">Booking List</field>
+        <field name="tag">realtime_booking_list.booking_client_action</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="Booking_list_categ" name="Booking List" action="action_booking_list" parent="station_management.station_management_root" sequence="10"/>
+</odoo>
