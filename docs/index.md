@@ -8,7 +8,7 @@ ensuring efficient customer service.
 - Booking
 - Station Management
 - Fleet Management
-- Booking List
+- Booking Real Time
 
 ### **Booking**
 Our booking model for station management is  designed for various station services.
@@ -38,7 +38,7 @@ provide comprehensive details about the engine.
 <img src="img/car_form.png" alt="Car Form View" style="width: auto;"/>
 
 ### **Booking Real Time**
-This menu is designed for regular search, booking, real time change state notificatin and deletion of bookings using the Odoo client action implemented in Owl JS.<br><br>
+This menu is designed for regular search, booking, real time change state notification and deletion of bookings using the Odoo client action implemented in Owl JS.<br><br>
 <img src="img/booking_list.png" alt="Booking List" style="width: auto;"/><br><br>
 When you change the booking state to 'Arrived', it will trigger a real-time notification on the client side in Odoo.
 <img src="img/booking_noti.png" alt="Booking List" style="width: auto;"/>
