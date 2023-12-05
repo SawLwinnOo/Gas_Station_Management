@@ -37,8 +37,8 @@ provide comprehensive details about the engine.
 <img src="img/kanban_car.png" alt="Car Kanban View" style="width: auto;"/>
 <img src="img/car_form.png" alt="Car Form View" style="width: auto;"/>
 
-### **Booking List**
-This menu is designed for regular search, booking, and deletion of bookings using the Odoo client action implemented in Owl JS.<br><br>
+### **Booking Real Time**
+This menu is designed for regular search, booking, real time change state notificatin and deletion of bookings using the Odoo client action implemented in Owl JS.<br><br>
 <img src="img/booking_list.png" alt="Booking List" style="width: auto;"/><br><br>
 When you change the booking state to 'Arrived', it will trigger a real-time notification on the client side in Odoo.
 <img src="img/booking_noti.png" alt="Booking List" style="width: auto;"/>
